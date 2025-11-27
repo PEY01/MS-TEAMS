@@ -14,6 +14,8 @@ This project is a Badge Generator App built using Python.
 It allows users to generate simple badge images containing the  Name.
 
 
+User will enter name and an award to generate a badge automatically 
+
 #REQUIREMENTS
 -flask
 -pillow (for image processing)
