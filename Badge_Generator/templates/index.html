@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Badge Generator</title>
+  </head>
+  <body>
+    <h1>Badge Generator (API + GUI)</h1>
+
+    <form onsubmit="return false;">
+      <label>Label: <input id="label" value="build" /></label><br />
+      <label>Message: <input id="message" value="passing" /></label><br />
+      <label>Color: <input id="color" value="#4c1" /></label><br />
+      <label>Left Color: <input id="left" value="#555" /></label><br /><br />
+      <button onclick="updatePreview()">Preview</button>
+    </form>
+
+    <h3>Preview:</h3>
+    <div id="preview"></div>
+
+    <script>
+      async function updatePreview() {
+        const l = document.getElementById("label").value;
+        const m = document.getElementById("message").value;
+        const c = document.getElementById("color").value;
+        const lc = document.getElementById("left").value;
+        const url = `/api/badge?label=${l}&message=${m}&color=${c}&left_color=${lc}&type=svg`;
+
+        const res = await fetch(url);
+        const svg = await res.text();
+        document.getElementById("preview").innerHTML = svg;
+      }
+      updatePreview();
+    </script>
+  </body>
+</html>
